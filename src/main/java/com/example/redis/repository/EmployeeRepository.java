@@ -29,10 +29,15 @@ public class EmployeeRepository {
     public void saveEmployee(Employee employee){
 
         hashOperations.put("EMPLOYEE", employee.getId(), employee);
+        //listOperations.leftPush("EMPLOYEE", employee);
+        //setOperations.add("EMPLOYEE", employee);
+
     }
     public List<Employee> findAll(){
 
         return hashOperations.values("EMPLOYEE");
+        //		return listOperations.range("EMPLOYEE", 0, listOperations.size("EMPLOYEE"));
+        //return setOperations.members("EMPLOYEE");
     }
     public Employee findById(Integer id){
 
@@ -43,6 +48,10 @@ public class EmployeeRepository {
         saveEmployee(employee);
     }
     public void delete(Integer id){
+
         hashOperations.delete("EMPLOYEE", id);
+        //listOperations.rightPopAndLeftPush("EMPLOYEE", id);
+//        Employee e = this.findById(id);
+//        setOperations.remove("EMPLOYEE", e);
     }
 }
