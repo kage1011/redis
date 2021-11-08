@@ -2,7 +2,9 @@ package com.example.redis.repository;
 
 import com.example.redis.model.Employee;
 import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.SetOperations;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,11 +13,14 @@ import java.util.List;
 public class EmployeeRepository {
 
     private HashOperations hashOperations;//crud hash
+    private ListOperations listOperations;//crud list
+    private SetOperations setOperations;//crud set
     private RedisTemplate redisTemplate;
 
     public EmployeeRepository(RedisTemplate redisTemplate) {
 
-        this.hashOperations = redisTemplate.opsForHash();
+       // this.hashOperations = redisTemplate.opsForHash();
+        this.listOperations = redisTemplate.opsForList();
         this.redisTemplate = redisTemplate;
 
     }
