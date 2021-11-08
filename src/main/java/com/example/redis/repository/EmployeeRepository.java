@@ -19,8 +19,9 @@ public class EmployeeRepository {
 
     public EmployeeRepository(RedisTemplate redisTemplate) {
 
-       // this.hashOperations = redisTemplate.opsForHash();
-        this.listOperations = redisTemplate.opsForList();
+       this.hashOperations = redisTemplate.opsForHash();
+        //this.listOperations = redisTemplate.opsForList();
+        //this.setOperations = (SetOperations) redisTemplate.opsForZSet();
         this.redisTemplate = redisTemplate;
 
     }
